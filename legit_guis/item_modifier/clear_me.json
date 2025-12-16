@@ -1,0 +1,7 @@
+{
+  "function": "minecraft:set_custom_data",
+  "tag": {
+    "clear_me": 1
+  },
+  "conditions": []
+}

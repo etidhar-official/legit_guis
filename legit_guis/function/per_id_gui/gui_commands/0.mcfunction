@@ -1,0 +1,1 @@
+$execute unless function rpg:tick/crafting/wooden_sword_t1 unless function rpg:tick/crafting/wooden_sword_t2 unless function rpg:tick/crafting/bone_blade unless function rpg:tick/crafting/simple_backpack run item replace block ~ ~ ~ container.16 from block $(gui_id) 58 -9 container.16 legit_guis:clear_me
