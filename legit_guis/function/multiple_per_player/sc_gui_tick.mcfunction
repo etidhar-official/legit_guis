@@ -3,10 +3,10 @@
 ##ALL CHESTS WILL BE REPLACED WITH SHULKERS
 #you can detect when a shulker is open using the change in hitbox. I hate this game so much
 $execute positioned 6001 $(item_id) $(player_id) positioned ~$(gui_id) ~$(item_id) ~ run forceload add ~ ~
-execute store result score !arrow server_data run data get entity @n[type=arrow] Pos[1] 100
+execute store result score !arrow game_info run data get entity @n[type=arrow] Pos[1] 100
 $execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6001 1.65 $(player_id) positioned ~$(gui_id) ~$(item_id) ~ positioned ~ ~$(item_id) ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run forceload remove ~ ~
 $execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6001 1.65 $(player_id) positioned ~$(gui_id) ~$(item_id) ~ positioned ~ ~$(item_id) ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run tag @s remove opened_gui.backpack
-$execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6001 1.65 $(player_id) positioned ~$(gui_id) ~$(item_id) ~ positioned ~ ~$(item_id) ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run kill @n[type=arrow,tag=shulker_detection]
+$execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6001 1.65 $(player_id) positioned ~$(gui_id) ~$(item_id) ~ positioned ~ ~$(item_id) ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-0.65 ~ run kill @e[type=arrow,tag=shulker_detection,distance=..0.15]
 $execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6001 1.65 $(player_id) positioned ~$(gui_id) ~$(item_id) ~ positioned ~ ~$(item_id) ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run return run scoreboard players reset @s legit_gui.min_time_before_close
 
 $data merge storage legit_guis:packets {gui_basic:{template_id:$(template_id),player_id:$(player_id),gui_id:$(gui_id),item_id:$(item_id)}}

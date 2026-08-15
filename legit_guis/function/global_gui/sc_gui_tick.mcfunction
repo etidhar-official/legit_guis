@@ -3,12 +3,13 @@
 ##ALL CHESTS WILL BE REPLACED WITH SHULKERS
 #you can detect when a shulker is open using the change in hitbox. I hate this game so much
 
-$forceload add 600$(gui_id) 0
-$execute if score !time_open legit_gui.min_time_before_close matches 20.. positioned 600$(gui_id) 1.65 0 unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run forceload remove ~ ~
-$execute if score !time_open legit_gui.min_time_before_close matches 20.. positioned 600$(gui_id) 1.65 0 unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run tag @s remove opened_gui.rec1
-$execute if score !time_open legit_gui.min_time_before_close matches 20.. positioned 600$(gui_id) 1.65 0 unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run kill @n[type=arrow,tag=shulker_detection]
-$execute if score !time_open legit_gui.min_time_before_close matches 20.. positioned 600$(gui_id) 1.65 0 unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run return run scoreboard players reset !time_open legit_gui.min_time_before_close
+$execute positioned ~6000 ~ ~ run forceload add ~$(gui_id) ~
+$execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6000 1.65 0 positioned ~$(gui_id) ~ ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run forceload remove ~ ~
+$execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6000 1.65 0 positioned ~$(gui_id) ~ ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run scoreboard players reset @s legit_gui.open_global
+$execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6000 1.65 0 positioned ~$(gui_id) ~ ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-0.65 ~ run kill @e[type=arrow,tag=shulker_detection,distance=..0.15]
+$execute as @s[scores={legit_gui.min_time_before_close=20..}] positioned 6000 1.65 0 positioned ~$(gui_id) ~ ~ unless entity @n[type=arrow,tag=shulker_detection,dx=0] positioned ~ ~-1 ~ run return run scoreboard players reset @s legit_gui.min_time_before_close
 
+$execute positioned 6000 0 0 positioned ~$(gui_id) ~ ~ run function legit_guis:global_gui/gui_commands/$(gui_id)_pre with storage legit_guis:packets gui_basic
 
 data modify storage legit_guis:packets gui_basic.slot set value 0
 function legit_guis:global_gui/fill_slot with storage legit_guis:packets gui_basic
@@ -65,4 +66,4 @@ function legit_guis:global_gui/fill_slot with storage legit_guis:packets gui_bas
 data modify storage legit_guis:packets gui_basic.slot set value 26
 function legit_guis:global_gui/fill_slot with storage legit_guis:packets gui_basic
 
-# $execute positioned 600$(gui_id) 0 0 run function legit_guis:global_gui/gui_commands/$(gui_id) with storage legit_guis:packets gui_basic
+$execute positioned 6000 0 0 positioned ~$(gui_id) ~ ~ run function legit_guis:global_gui/gui_commands/$(gui_id)_post with storage legit_guis:packets gui_basic
